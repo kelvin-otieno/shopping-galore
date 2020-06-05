@@ -1,0 +1,44 @@
+.menu-item {
+  border: 1px solid black;
+  height: 240px;
+  margin-top: 20px;
+}
+
+.large {
+  height: 380px;
+}
+
+.description {
+  border: 1px solid black;
+  text-align: center;
+  margin: auto;
+  padding: 0 25px;
+  background-color: white;
+  opacity: 0.7;
+
+  .title {
+    font-weight: bold;
+    margin-bottom: 6px;
+    font-size: 22px;
+    color: #4a4a4a;
+  }
+
+  .subtitle {
+    font-weight: lighter;
+    font-size: 16px;
+  }
+}
+
+.zoom {
+  transition: transform 0.8s cubic-bezier(0.25, 0.45, 0.45, 0.95); /* Animation */
+}
+
+.zoom:hover {
+  cursor: pointer;
+  transform: scale(
+    1.1
+  ); /* (110% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+  &.description {
+    opacity: 0.9;
+  }
+}

@@ -1,6 +1,7 @@
 import React from "react";
 import "./homepage2.scss";
 
+//just using this as a template for designing but I am not actually using it in the project
 const HomePage2 = () => {
   return (
     <div className="homepage">
