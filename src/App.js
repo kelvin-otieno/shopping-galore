@@ -2,6 +2,9 @@ import React from "react";
 import { Route, Switch } from "react-router-dom";
 import "./App.css";
 import HomePage from "./components/pages/homepage/homepage";
+import Shop from "./components/pages/shop/shop";
+import CollectionItem from "./components/collection-item/collection-item";
+import Collection from "./components/collection-preview/collection-preview";
 
 const Hats = (props) => {
   console.log(props)
@@ -18,6 +21,9 @@ function App() {
       <Switch>
         <Route exact path="/" component={HomePage} />
         <Route exact path="/shop/hats" component={Hats} />
+        <Route exact path="/shop" component={Shop} />
+        <Route exact path="/collection-item" component={CollectionItem} />
+        <Route exact path="/collection" component={Collection} />
       </Switch>
     </div>
   );

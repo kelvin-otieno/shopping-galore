@@ -1,0 +1,28 @@
+.collection-item {
+  &:hover {
+    .image {
+      opacity: 0.7;
+    }
+
+    button {
+      display: block;
+    }
+  }
+  
+}
+
+.add-button {
+  width: 90%;
+  text-align: center;
+  margin: auto;
+  margin-bottom: 10px;
+  display: none;
+}
+
+.name {
+  font-weight: bold;
+}
+
+.price {
+  font-weight: bold;
+}
