@@ -1,10 +1,15 @@
 import React from "react";
 import "./menu-item.scss";
+import { withRouter } from "react-router-dom";
 
-export default function MenuItem({ title, imageUrl, size }) {
+const MenuItem = ({ title, imageUrl, size, linkUrl, history, match }) => {
   return (
     <div>
-      <div className={size === "large" ? "col s12 m6 l6" : "col s12 m6 l4"} style = {{overflow:"hidden"}}>
+      <div
+        className={size === "large" ? "col s12 m6 l6" : "col s12 m6 l4"}
+        style={{ overflow: "hidden" }}
+        onClick={() => history.push(`${match.url}${linkUrl}`)}
+      >
         <div
           className={"zoom menu-item valign-wrapper " + size}
           style={{ backgroundImage: `url(${imageUrl})` }}
@@ -17,4 +22,6 @@ export default function MenuItem({ title, imageUrl, size }) {
       </div>
     </div>
   );
-}
+};
+
+export default withRouter(MenuItem);

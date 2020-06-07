@@ -12,7 +12,7 @@ class Directory extends Component {
   }
 
   componentDidMount() {
-    this.setState({ sections }, () => console.log(this.state.sections));
+    this.setState({ sections });
   }
 
   render() {
@@ -22,10 +22,11 @@ class Directory extends Component {
           <div className="row">
             {this.state.sections.map((section) => (
               <MenuItem
-                title={section.title}
                 key={section.id}
+                title={section.title}
                 imageUrl={section.imageUrl}
-                size = {section.size}
+                size={section.size}
+                linkUrl={section.linkUrl}
               />
             ))}
           </div>
