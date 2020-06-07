@@ -16,7 +16,7 @@ class Shop extends Component {
   render() {
     return (
       <div className = "shop">
-        <h3>Collections</h3>
+        {/* <h3>Collections</h3> */}
         {this.state.shops.map(({ id, ...otherCollectionProps }) => (
           <CollectionPreview key={id} {...otherCollectionProps} />
         ))}

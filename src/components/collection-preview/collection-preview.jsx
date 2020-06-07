@@ -5,7 +5,7 @@ import "./collection-preview.scss";
 const CollectionPreview = ({ title, items }) => {
   return (
     <div className="main-div">
-      <h1>{title.toUpperCase()}</h1>
+      <h4 className = "title">{title.toUpperCase()}</h4>
       <div className="row">
         {items
           .filter((item, index) => index < 4)

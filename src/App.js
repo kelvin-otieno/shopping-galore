@@ -5,6 +5,7 @@ import HomePage from "./components/pages/homepage/homepage";
 import Shop from "./components/pages/shop/shop";
 import CollectionItem from "./components/collection-item/collection-item";
 import Collection from "./components/collection-preview/collection-preview";
+import Header from "./components/header/header";
 
 const Hats = (props) => {
   console.log(props)
@@ -18,6 +19,7 @@ const Hats = (props) => {
 function App() {
   return (
     <div>
+      <Header/>
       <Switch>
         <Route exact path="/" component={HomePage} />
         <Route exact path="/shop/hats" component={Hats} />
