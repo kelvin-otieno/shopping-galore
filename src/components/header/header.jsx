@@ -1,15 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import {ReactComponent as Logo} from "../../images/crown.svg"
+import { ReactComponent as Logo } from "../../images/crown.svg";
 import "./header.scss";
 
 const Header = () => {
   return (
-    <div className="navbar">
-      <nav className="white">
+    <div className="navbar ">
+      <nav className="white z-depth-0">
         <div className="nav-wrapper">
           <Link to="/" className="brand-logo black-text">
-            <Logo/>
+            <Logo />
           </Link>
           <ul id="nav-mobile" className="right hide-on-med-and-down">
             <li>
@@ -23,7 +23,7 @@ const Header = () => {
               </Link>
             </li>
             <li>
-              <Link to="/signin" className="link">
+              <Link to="/authpage" className="link">
                 SIGN IN
               </Link>
             </li>
