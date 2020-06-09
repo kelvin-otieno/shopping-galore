@@ -64,7 +64,7 @@ class SignUp extends Component {
             <div>
               <CustomButton
                 type="submit"
-                className="btn black white-text waves-effect left"
+                className="btn waves-effect waves-dark left sign-in-sign-up"
               >
                 SIGN UP
               </CustomButton>
