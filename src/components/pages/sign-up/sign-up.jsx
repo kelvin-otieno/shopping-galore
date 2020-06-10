@@ -58,7 +58,7 @@ class SignUp extends Component {
               id="displayName"
               text="Display Name"
               name="displayName"
-              value={this.state.name}
+              value={this.state.displayName}
               onChange={this.handleChange}
             />
             <CustomInput
@@ -82,7 +82,7 @@ class SignUp extends Component {
               id="confirmpassword"
               text="Confirm Password"
               name="confirmPassword"
-              value={this.state.confirmpassword}
+              value={this.state.confirmPassword}
               onChange={this.handleChange}
             />
             <div>

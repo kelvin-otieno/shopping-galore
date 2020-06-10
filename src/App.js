@@ -28,9 +28,8 @@ class App extends Component {
                 id: snapShot.id,
                 ...snapShot.data(),
               },
-            }
+            },() =>console.log(this.state.currentUser)
           );
-          console.log(this.state)
         });
       } else {
         this.setState({ currentUser: null });
@@ -38,7 +37,7 @@ class App extends Component {
       // createUserProfileDocument(user);
       // this.setState({ currentUser: user });
       // user ? this.props.history.push("/") : this.props.history.push("/signin");
-      // console.log(userAuth);
+ 
     });
   }
 
