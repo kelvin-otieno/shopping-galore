@@ -12,7 +12,7 @@ const Header = (props) => {
           <Link to="/" className="brand-logo black-text">
             <Logo />
           </Link>
-          <ul id="nav-mobile" className="right hide-on-med-and-down">
+          <ul id="nav-mobile" className="right">
             <li>
               <Link to="/shop" className="link">
                 SHOP

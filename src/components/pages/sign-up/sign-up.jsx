@@ -1,25 +1,49 @@
 import React, { Component } from "react";
 import CustomInput from "../../input/custom-input";
 import CustomButton from "../../custom-button/custom-button";
+import {
+  auth,
+  createUserProfileDocument,
+} from "../../../firebase/firebase.utils";
 
 class SignUp extends Component {
   constructor() {
     super();
     this.state = {
-      name: "",
+      displayName: "",
       email: "",
       password: "",
-      confirmpassword: "",
+      confirmPassword: "",
     };
   }
 
-  handleSubmit = (event) => {
+  handleSubmit = async (event) => {
     event.preventDefault();
-    this.setState({ name: "", email: "", password: "", confirmpassword: "" });
+    const { displayName, email, password, confirmPassword } = this.state;
+    if (password !== confirmPassword) {
+      alert("passwords don't match");
+      return;
+    } else {
+      try {
+        const { user } = await auth.createUserWithEmailAndPassword(
+          email,
+          password
+        );
+        await createUserProfileDocument(user, { displayName });
+        this.setState({
+          displayName: "",
+          email: "",
+          password: "",
+          confirmPassword: "",
+        });
+      } catch (error) {
+        console.error(error);
+      }
+    }
   };
 
   handleChange = (event) => {
-    let { value, name } = event.target;
+    const { value, name } = event.target;
     this.setState({ [name]: value });
   };
   render() {
@@ -31,9 +55,9 @@ class SignUp extends Component {
           <form onSubmit={this.handleSubmit}>
             <CustomInput
               type="text"
-              id="name"
+              id="displayName"
               text="Display Name"
-              name="name"
+              name="displayName"
               value={this.state.name}
               onChange={this.handleChange}
             />
@@ -57,7 +81,7 @@ class SignUp extends Component {
               type="Password"
               id="confirmpassword"
               text="Confirm Password"
-              name="confirmpassword"
+              name="confirmPassword"
               value={this.state.confirmpassword}
               onChange={this.handleChange}
             />
