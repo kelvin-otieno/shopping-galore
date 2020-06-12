@@ -1,5 +1,5 @@
-.navbar{
-   margin:0 10px 10px 25px;
+.navbar {
+  margin: 0 10px 10px 25px;
 }
 
 ul {
@@ -10,3 +10,17 @@ ul {
     }
   }
 }
+
+.dropdown-content {
+  width: fit-content !important;
+  height: fit-content !important;
+  top: 100% !important;
+  li:hover {
+    background-color: white !important;
+  }
+
+}
+
+// nav ul li:hover {
+//   background-color: rgba(0, 0, 0, 0) !important;
+// }

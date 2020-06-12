@@ -1,18 +1,21 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { ReactComponent as Logo } from "../../images/crown.svg";
+import { ReactComponent as AppLogo } from "../../images/crown.svg";
 import { auth } from "../../firebase/firebase.utils";
 import "./header.scss";
 import { connect } from "react-redux";
+import CartIcon from "../cart-icon/cart-icon";
+import Cart from "../cart/cart";
 
 const Header = ({ currentUser }) => {
   console.log(currentUser);
+
   return (
     <div className="navbar ">
       <nav className="white z-depth-0">
         <div className="nav-wrapper">
           <Link to="/" className="brand-logo black-text">
-            <Logo />
+            <AppLogo />
           </Link>
           <ul id="nav-mobile" className="right">
             <li>
@@ -42,9 +45,21 @@ const Header = ({ currentUser }) => {
                 </Link>
               </li>
             )}
+
+            <li className="dropdown-trigger" data-target="dropdown1">
+              <CartIcon />
+              {/* <a href=""><AppLogo /></a> */}
+            </li>
           </ul>
         </div>
       </nav>
+      <ul id="dropdown1" className="dropdown-content z-depth-0">
+        <li>
+          <Cart/>
+        </li>
+
+      </ul>
+ 
     </div>
   );
 };
