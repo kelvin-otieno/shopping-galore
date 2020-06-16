@@ -8,6 +8,11 @@ import SignInAndSignUpPage from "./components/pages/signinandsignuppage/SignInAn
 import { auth, createUserProfileDocument } from "./firebase/firebase.utils";
 import setCurrentUser from "./redux/user/user.action";
 import { connect } from "react-redux";
+import Hats from "./components/pages/hats/hats";
+import Jackets from "./components/pages/jackets/jackets";
+import Sneakers from "./components/pages/sneakers/sneakers";
+import Womens from "./components/pages/womens/womens";
+import Mens from "./components/pages/mens/mens";
 
 class App extends Component {
   constructor(props) {
@@ -53,9 +58,18 @@ class App extends Component {
             exact
             path="/signin"
             render={() =>
-              this.props.currentUser ? <Redirect to="/" /> : <SignInAndSignUpPage />
+              this.props.currentUser ? (
+                <Redirect to="/" />
+              ) : (
+                <SignInAndSignUpPage />
+              )
             }
           />
+          <Route exact path="/shop/hats" component={Hats} />
+          <Route exact path="/shop/jackets" component={Jackets} />
+          <Route exact path="/shop/sneakers" component={Sneakers} />
+          <Route exact path="/shop/womens" component={Womens} />
+          <Route exact path="/shop/mens" component={Mens} />
         </Switch>
       </div>
     );

@@ -2,9 +2,10 @@
   margin: 10px 10px 0px 10px !important;
   border: 2px solid black;
   padding: 10px 10px 0px 10px;
-//   height: 70vh;
+
+  //   height: 70vh;
   .cart-list {
-    height: 370px;
+    max-height: 370px;
     // overflow: auto;
     overflow-y: auto;
     margin-bottom: 10px;
@@ -17,8 +18,8 @@
   padding: 10px;
   height: fit-content;
   margin-bottom: 10px;
-  &:hover{
-      background-color: black !important;
-      color: white !important;
+  &:hover {
+    background-color: black !important;
+    color: white !important;
   }
 }

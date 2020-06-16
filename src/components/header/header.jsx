@@ -8,10 +8,9 @@ import CartIcon from "../cart-icon/cart-icon";
 import Cart from "../cart/cart";
 
 const Header = ({ currentUser }) => {
-  console.log(currentUser);
 
   return (
-    <div className="navbar ">
+    <div className="navbar-fixed">
       <nav className="white z-depth-0">
         <div className="nav-wrapper">
           <Link to="/" className="brand-logo black-text">
@@ -55,11 +54,9 @@ const Header = ({ currentUser }) => {
       </nav>
       <ul id="dropdown1" className="dropdown-content z-depth-0">
         <li>
-          <Cart/>
+          <Cart />
         </li>
-
       </ul>
- 
     </div>
   );
 };
