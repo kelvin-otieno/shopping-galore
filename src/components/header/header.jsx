@@ -6,10 +6,12 @@ import "./header.scss";
 import { connect } from "react-redux";
 import CartIcon from "../cart-icon/cart-icon";
 import Cart from "../cart/cart";
+import { selectCurrentUser } from "../../redux/user/user.selectors";
+import { createStructuredSelector } from "reselect";
 
 const Header = ({ currentUser }) => {
   return (
-    <div className = "header">
+    <div className="header">
       <div className="navbar-fixed">
         <nav className="white z-depth-0">
           <div className="nav-wrapper">
@@ -67,8 +69,8 @@ const Header = ({ currentUser }) => {
   );
 };
 
-const mapStateToProps = (state) => ({
-  currentUser: state.user.currentUser,
+const mapStateToProps = createStructuredSelector ({
+  currentUser: selectCurrentUser,
 });
 
 export default connect(mapStateToProps)(Header);

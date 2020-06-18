@@ -1,9 +1,24 @@
 import React from "react";
 import "./checkout-page.scss";
+import { createStructuredSelector } from "reselect";
+import { selectCartItems, selectCartTotalPrice } from "../../../redux/cart/cart.selectors";
+import { connect } from "react-redux";
+import {
+  removeFromCart,
+  increaseCartQuantity,
+  decreaseCartQuantity,
+} from "../../../redux/cart/cart.actions";
 
-const CheckoutPage = () => {
+const CheckoutPage = ({
+  cartItems,
+  removeFromCart,
+  increaseCartQuantity,
+  decreaseCartQuantity,
+  totalPrice
+}) => {
   return (
     <div className="container checkout-page">
+      <h6 className = "header">CHECKOUT PAGE</h6>
       <table className="responsive-table centered">
         <thead>
           <tr>
@@ -16,32 +31,58 @@ const CheckoutPage = () => {
         </thead>
 
         <tbody>
-          <tr>
-            <td>
-              <img src={require("../../../images/jackets.png")} alt="" />
-            </td>
-            <td>Shearling Jacket</td>
-            <td>
-              {/* <tr className="inner-row">
-                <div className = "center">
-                  <td>&lt;</td>
-                  <td>1</td>
-                  <td>&gt;</td>
+          {cartItems.map(({ id, imageUrl, quantity, price, name }) => (
+            <tr key={id}>
+              <td>
+                <img src={`${imageUrl}`} alt="" />
+              </td>
+              <td>{name}</td>
+              <td>
+                <div>
+                  <span
+                    className="alter-count"
+                    onClick={() => decreaseCartQuantity(id)}
+                  >
+                    &lt;
+                  </span>
+                  <span className="count">{quantity}</span>
+                  <span
+                    className="alter-count"
+                    onClick={() => increaseCartQuantity(id)}
+                  >
+                    &gt;
+                  </span>
                 </div>
-              </tr> */}
-              <div>
-                  <span>&lt;</span>
-                  <span>1</span>
-                  <span>&gt;</span>
-              </div>
-            </td>
-            <td>$0.87</td>
-            <td>x</td>
-          </tr>
+              </td>
+              <td>{`$${price}`}</td>
+              <td>
+                <span
+                  className="remove-item"
+                  onClick={() => removeFromCart(id)}
+                >
+                  &#10005;
+                </span>
+              </td>
+            </tr>
+          ))}
         </tbody>
       </table>
+      <div className="total-price">
+          <span>{`TOTAL : $ ${totalPrice}`}</span>
+      </div>
     </div>
   );
 };
 
-export default CheckoutPage;
+const mapStateToProps = createStructuredSelector({
+  cartItems: selectCartItems,
+  totalPrice:selectCartTotalPrice
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  removeFromCart: (id) => dispatch(removeFromCart(id)),
+  increaseCartQuantity: (id) => dispatch(increaseCartQuantity(id)),
+  decreaseCartQuantity: (id) => dispatch(decreaseCartQuantity(id)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(CheckoutPage);

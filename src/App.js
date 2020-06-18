@@ -14,6 +14,8 @@ import Sneakers from "./components/pages/sneakers/sneakers";
 import Womens from "./components/pages/womens/womens";
 import Mens from "./components/pages/mens/mens";
 import CheckoutPage from "./components/pages/checkout/checkout-page";
+import { createStructuredSelector } from "reselect";
+import { selectCurrentUser } from "./redux/user/user.selectors";
 
 class App extends Component {
   constructor(props) {
@@ -78,8 +80,8 @@ class App extends Component {
   }
 }
 
-const mapStateToProps = ({ user }) => ({
-  currentUser: user.currentUser,
+const mapStateToProps = createStructuredSelector({
+  currentUser: selectCurrentUser,
 });
 
 const mapDispatchToProps = (dispatch) => ({

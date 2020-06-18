@@ -6,8 +6,11 @@ import {
   selectCartItems,
   selectDisplayCart,
 } from "../../redux/cart/cart.selectors";
+import { createStructuredSelector } from "reselect";
+import { withRouter } from "react-router-dom/cjs/react-router-dom.min";
+import { toggleDisplayCart } from "../../redux/cart/cart.actions";
 
-const Cart = ({ cartItems, displayCart }) => {
+const Cart = ({ cartItems, displayCart, history,dispatch }) => {
   let display = "block";
   displayCart ? (display = "block") : (display = "none");
   return (
@@ -26,16 +29,27 @@ const Cart = ({ cartItems, displayCart }) => {
         )}
       </div>
 
-      <button className="btn waves-effect  white black-text center checkout-btn ">
+      <button
+        className="btn waves-effect  white black-text center checkout-btn "
+        onClick={() => {
+          dispatch(toggleDisplayCart())
+          history.push("/checkout")}}
+      >
         GO TO CHECKOUT
       </button>
     </div>
   );
 };
 
-const mapStateToProps = (state) => ({
-  cartItems: selectCartItems(state),
-  displayCart: selectDisplayCart(state),
+const mapStateToProps = createStructuredSelector({
+  cartItems: selectCartItems,
+  displayCart: selectDisplayCart,
 });
 
-export default connect(mapStateToProps)(Cart);
+// const mapDispatchToProps = (dispatch) => (
+//   {
+//     toggleDisplayCart:() => dispatch(toggleDisplayCart())
+//   }
+// )
+
+export default withRouter(connect(mapStateToProps)(Cart));

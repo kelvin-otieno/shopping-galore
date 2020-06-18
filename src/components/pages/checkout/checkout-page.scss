@@ -21,3 +21,26 @@ img{
 .inner-row{
     border-bottom: none;
 }
+
+.alter-count{
+  cursor: pointer;
+
+}
+
+.remove-item{
+  cursor: pointer;
+  font-size: 14px !important;
+  font-weight: bold;
+}
+
+.total-price
+{
+  margin-top: 20px;
+  font-weight: bold;
+  float: right;
+  font-size: 20px;
+}
+
+.header{
+  font-weight: bold;
+}

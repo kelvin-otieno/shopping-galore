@@ -14,10 +14,10 @@ const cartReducer = (state = initialState, action) => {
           quantity: 1,
         };
         let newState = state;
-        newState.cartItems.push(newCartItem)
+        newState.cartItems.push(newCartItem);
         return {
           ...state,
-          cartItems:[...newState.cartItems]
+          cartItems: [...newState.cartItems],
         };
       } else {
         //item exists in the cart so get and add 1 to its quantity
@@ -26,11 +26,89 @@ const cartReducer = (state = initialState, action) => {
           .indexOf(action.payload.id);
 
         let newState = state;
-        newState.cartItems[itemIndex].quantity += 1
+        newState.cartItems[itemIndex].quantity += 1;
 
         return {
           ...state,
-          cartItems:[...newState.cartItems]
+          cartItems: [...newState.cartItems],
+        };
+      }
+
+    case cartActionTypes.REMOVE_FROM_CART:
+      const remFilter = state.cartItems.filter((item) => {
+        return item.id === action.payload;
+      });
+      if (remFilter.length === 0) {
+        //item does not exist in the cart.return state as is
+
+        return {
+          ...state,
+        };
+      } else {
+        //item exists in the cart so get and remove it
+        const itemIndex = state.cartItems
+          .map((item) => item.id)
+          .indexOf(action.payload);
+
+        let newCartItems = state.cartItems;
+        newCartItems.splice(itemIndex, 1);
+
+        return {
+          ...state,
+          cartItems: [...newCartItems],
+        };
+      }
+
+    case cartActionTypes.INCREASE_CART_QUANTITY:
+      const incFilter = state.cartItems.filter((item) => {
+        return item.id === action.payload;
+      });
+      if (incFilter.length === 0) {
+        //item does not exist in the cart. return state as is
+
+        return {
+          ...state,
+        };
+      } else {
+        //item exists in the cart so get and add 1 to its quantity
+        const itemIndex = state.cartItems
+          .map((item) => item.id)
+          .indexOf(action.payload);
+
+        let newCartItems = state.cartItems;
+        newCartItems[itemIndex].quantity += 1;
+
+        return {
+          ...state,
+          cartItems: [...newCartItems],
+        };
+      }
+
+    case cartActionTypes.DECREASE_CART_QUANTITY:
+      const decFilter = state.cartItems.filter((item) => {
+        return item.id === action.payload;
+      });
+      if (decFilter.length === 0) {
+        //item does not exist in the cart. return state as is
+
+        return {
+          ...state,
+        };
+      } else {
+        //item exists in the cart so get and remove 1 from its quantity
+        const itemIndex = state.cartItems
+          .map((item) => item.id)
+          .indexOf(action.payload);
+
+        let newCartItems = state.cartItems;
+        newCartItems[itemIndex].quantity -= 1;
+
+        if (!newCartItems[itemIndex].quantity) {
+          newCartItems.splice(itemIndex, 1);
+        }
+        return {
+          ...state,
+          cartItems: [...newCartItems],
         };
       }
 
@@ -39,7 +117,7 @@ const cartReducer = (state = initialState, action) => {
         ...state,
         displayCart: !state.displayCart,
       };
-      
+
     default:
       return {
         ...state,
