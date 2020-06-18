@@ -2,10 +2,10 @@ import React from "react";
 import "./cart-item.scss";
 const CartItem = ({ imageUrl, price, quantity, name }) => {
   return (
-    <div>
+    <div className = "cart-item">
       <div className="card horizontal card-img">
         <div className="card-image " >
-          <img src={require("../../images/jackets.png")} alt="img" />
+          <img src={imageUrl} alt="img" />
     
         </div>
         <div className="card-stacked">

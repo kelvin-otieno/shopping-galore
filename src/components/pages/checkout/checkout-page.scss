@@ -1,0 +1,23 @@
+.column-headers {
+  width: 100% !important;
+  .col {
+    width: 20% !important;
+    font-weight: bold;
+  }
+}
+
+td {
+  width: 20% !important;
+  font-weight: bold;
+  div *{
+      margin: 5px;
+  }
+}
+
+img{
+    width: 120px;
+}
+
+.inner-row{
+    border-bottom: none;
+}

@@ -3,7 +3,6 @@ import CollectionItem from "../collection-item/collection-item";
 import "./collection.scss";
 
 const Collection = ({ title, items }) => {
-  console.log(items)
   return (
     <div className="main-div">
       <h2 className = "title center">{title}</h2>

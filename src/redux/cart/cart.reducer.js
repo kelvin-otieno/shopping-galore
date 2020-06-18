@@ -1,50 +1,45 @@
 import { cartActionTypes } from "./cart.types";
 
-const initialState = null;
+const initialState = { cartItems: [], displayCart: false };
 const cartReducer = (state = initialState, action) => {
   switch (action.type) {
     case cartActionTypes.ADD_TO_CART:
-      if (state.hasOwnProperty("cart")) {
-        //check if cart key exists
-        const searchCart = state.cart.filter((item) => {
-          return item.id === action.payload.id;
-        });
-        if (searchCart.length === 0) {
-          //item does not exist in the cart
-          const newCartItem = {
-            ...action.payload,
-            quantity: 1,
-          };
-          state.cart.push(newCartItem);
-          return {
-            ...state,
-          };
-        } else {
-          //item exists in the cart so get and add 1 to its quantity
-          const itemIndex = state.cart
-            .map((item) => item.id)
-            .indexOf(action.payload.id);
-
-          state.cart[itemIndex].quantity += 1;
-
-          return {
-            ...state,
-          };
-        }
+      const searchCart = state.cartItems.filter((item) => {
+        return item.id === action.payload.id;
+      });
+      if (searchCart.length === 0) {
+        //item does not exist in the cart
+        const newCartItem = {
+          ...action.payload,
+          quantity: 1,
+        };
+        let newState = state;
+        newState.cartItems.push(newCartItem)
+        return {
+          ...state,
+          cartItems:[...newState.cartItems]
+        };
       } else {
-        //state has no cart key so add cart and the first item to it
+        //item exists in the cart so get and add 1 to its quantity
+        const itemIndex = state.cartItems
+          .map((item) => item.id)
+          .indexOf(action.payload.id);
+
+        let newState = state;
+        newState.cartItems[itemIndex].quantity += 1
 
         return {
           ...state,
-          cart: [
-            {
-              ...action.payload,
-              quantity: 1,
-            },
-          ],
+          cartItems:[...newState.cartItems]
         };
       }
 
+    case cartActionTypes.TOGGLE_DISPLAY_CART:
+      return {
+        ...state,
+        displayCart: !state.displayCart,
+      };
+      
     default:
       return {
         ...state,

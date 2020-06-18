@@ -13,6 +13,7 @@ import Jackets from "./components/pages/jackets/jackets";
 import Sneakers from "./components/pages/sneakers/sneakers";
 import Womens from "./components/pages/womens/womens";
 import Mens from "./components/pages/mens/mens";
+import CheckoutPage from "./components/pages/checkout/checkout-page";
 
 class App extends Component {
   constructor(props) {
@@ -70,6 +71,7 @@ class App extends Component {
           <Route exact path="/shop/sneakers" component={Sneakers} />
           <Route exact path="/shop/womens" component={Womens} />
           <Route exact path="/shop/mens" component={Mens} />
+          <Route exact path="/checkout" component={CheckoutPage} />
         </Switch>
       </div>
     );

@@ -7,4 +7,10 @@ const addToCart = (cartItem) => {
   };
 };
 
-export { addToCart };
+const toggleDisplayCart = () => {
+  return {
+    type: cartActionTypes.TOGGLE_DISPLAY_CART,
+  };
+};
+
+export { addToCart, toggleDisplayCart };

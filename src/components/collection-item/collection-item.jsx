@@ -22,6 +22,8 @@ class CollectionItem extends Component {
             style={{
               backgroundImage: `url(${imageUrl})`,
               height: "350px",
+              backgroundRepeat:"no-repeat",
+              backgroundSize:"cover"
             }}
             className="valign-wrapper image"
           >
