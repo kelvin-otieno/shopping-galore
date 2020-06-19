@@ -2,7 +2,7 @@ import { createSelector } from "reselect";
 
 const selectShop = (state) => state.shop;
 
-export const selectShopData = createSelector(
+export const selectCollections = createSelector(
   selectShop,
-  (shop) => shop.shopData
+  (shop) => shop.collections
 );
