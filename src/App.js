@@ -8,13 +8,6 @@ import SignInAndSignUpPage from "./components/pages/sign-in-and-sign-up/sign-in-
 import { auth, createUserProfileDocument } from "./firebase/firebase.utils";
 import setCurrentUser from "./redux/user/user.action";
 import { connect } from "react-redux";
-
-
-// import Hats from "./components/pages/hats/hats";
-// import Jackets from "./components/pages/jackets/jackets";
-// import Sneakers from "./components/pages/sneakers/sneakers";
-// import Womens from "./components/pages/womens/womens";
-// import Mens from "./components/pages/mens/mens";
 import CheckoutPage from "./components/pages/checkout/checkout-page";
 import { createStructuredSelector } from "reselect";
 import { selectCurrentUser } from "./redux/user/user.selectors";
