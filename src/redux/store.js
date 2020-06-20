@@ -4,12 +4,18 @@ import rootReducer from "./root-reducer";
 import { composeWithDevTools } from "redux-devtools-extension";
 import { persistStore } from "redux-persist";
 
-const middlewares = [logger];
+let middlewares = [];
+let middlewareSection = applyMiddleware(...middlewares)
+
+if (process.env.NODE_ENV === 'development') {
+  middlewares.push(logger)
+  middlewareSection = composeWithDevTools(applyMiddleware(...middlewares))
+}
 const initialState = {};
 const store = createStore(
   rootReducer,
   initialState,
-  composeWithDevTools(applyMiddleware(...middlewares))
+  middlewareSection
 );
 
 const persistor = persistStore(store);
