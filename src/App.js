@@ -11,6 +11,7 @@ import { connect } from "react-redux";
 import CheckoutPage from "./components/pages/checkout/checkout-page";
 import { createStructuredSelector } from "reselect";
 import { selectCurrentUser } from "./redux/user/user.selectors";
+import { selectCollectionsForPreview } from "./redux/shop/shop.selectors";
 
 class App extends Component {
   constructor(props) {
@@ -23,21 +24,24 @@ class App extends Component {
   unsubscribeFromAuth = null;
 
   componentDidMount() {
+    const { setCurrentUser } = this.props;
+
     this.unsubscribeFromAuth = auth.onAuthStateChanged(async (userAuth) => {
       if (userAuth) {
         const userRef = createUserProfileDocument(userAuth);
         (await userRef).onSnapshot((snapShot) => {
-          this.props.setCurrentUser({
+          setCurrentUser({
             id: snapShot.id,
             ...snapShot.data(),
           });
         });
       } else {
-        this.props.setCurrentUser(userAuth);
+        setCurrentUser(userAuth);
       }
-      // createUserProfileDocument(user);
-      // this.setState({ currentUser: user });
-      // user ? this.props.history.push("/") : this.props.history.push("/signin");
+      // addCollectionAndDocuments(
+      //   "collections",
+      //   collections.map(({ title, items }) => ({ title, items }))
+      // );
     });
   }
 
@@ -77,6 +81,7 @@ class App extends Component {
 
 const mapStateToProps = createStructuredSelector({
   currentUser: selectCurrentUser,
+  collections: selectCollectionsForPreview,
 });
 
 const mapDispatchToProps = (dispatch) => ({

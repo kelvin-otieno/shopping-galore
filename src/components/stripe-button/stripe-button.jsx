@@ -13,7 +13,7 @@ const StripeCheckoutButton = ({ price }) => {
   return (
     <StripeCheckout
       label="Pay Now"
-      name="Fashion Gala Ltd."
+      name="Shop OnClick Ltd."
       billingAddress
       shippingAddress
       image="https://svgshare.com/i/CUz.svg"
