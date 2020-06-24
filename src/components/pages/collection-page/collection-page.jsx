@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import "./collection-page.scss";
 
 const CollectionPage = ({ collection }) => {
-
+  console.log(collection);
   return (
     <div className="category">
       <Collection title={collection.title} items={collection.items} />
