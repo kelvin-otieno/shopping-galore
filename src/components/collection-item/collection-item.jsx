@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { addToCart } from "../../redux/cart/cart.actions";
 
 class CollectionItem extends Component {
-   addItemToCart = (id, name, price, imageUrl) => {
+  addItemToCart = (id, name, price, imageUrl) => {
     this.props.addToCart({
       id,
       name,
@@ -15,6 +15,7 @@ class CollectionItem extends Component {
 
   render() {
     const { id, name, price, imageUrl } = this.props;
+    console.log(imageUrl);
     return (
       <div>
         <div className="collection-item col s12 m6 l3">
@@ -22,8 +23,8 @@ class CollectionItem extends Component {
             style={{
               backgroundImage: `url(${imageUrl})`,
               height: "350px",
-              backgroundRepeat:"no-repeat",
-              backgroundSize:"cover"
+              backgroundRepeat: "no-repeat",
+              backgroundSize: "cover",
             }}
             className="valign-wrapper image"
           >

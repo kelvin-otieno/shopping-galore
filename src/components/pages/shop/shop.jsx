@@ -11,7 +11,7 @@ import { updateCollections } from "../../../redux/shop/shop.actions";
 import { connect } from "react-redux";
 import WithSpinner from "../../with-spinner/with-spinner";
 
-// const CollectionsOverviewWithSpinner = WithSpinner(CollectionsOverview);
+const CollectionsOverviewWithSpinner = WithSpinner(CollectionsOverview);
 const CollectionPageWithSpinner = WithSpinner(CollectionPage);
 
 class Shop extends Component {
@@ -53,7 +53,7 @@ class Shop extends Component {
           exact
           path={`${match.path}`}
           render={(props) => (
-            WithSpinner(CollectionsOverview)(props) 
+            <CollectionsOverviewWithSpinner isLoading={isLoading} {...props} />
           )}
         />
       </div>
