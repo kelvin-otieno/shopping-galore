@@ -15,7 +15,6 @@ class CollectionItem extends Component {
 
   render() {
     const { id, name, price, imageUrl } = this.props;
-    console.log(imageUrl);
     return (
       <div>
         <div className="collection-item col s12 m6 l3">

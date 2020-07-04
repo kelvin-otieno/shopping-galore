@@ -15,5 +15,15 @@ export const selectCollectionsForPreview = createSelector(
 export const selectCollection = (urlParam) =>
   createSelector(
     selectCollections,
-    (collections) => collections[urlParam.routeName]
+    (collections) => {
+      return collections[urlParam.routeName] }
   );
+
+export const selectIsLoading = createSelector(
+  selectShop,
+  shop => shop.isLoading
+)
+export const selectIsCollectionLoaded = createSelector(
+  selectShop,
+  shop => !!Object.keys(shop.collections).length 
+)

@@ -8,7 +8,7 @@ const CollectionPage = ({ collection }) => {
   console.log(collection);
   return (
     <div className="category">
-      <Collection title={collection.title} items={collection.items} />
+     <Collection title={collection.title} items={collection.items} />
     </div>
   );
 };

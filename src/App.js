@@ -46,6 +46,7 @@ class App extends Component {
   }
 
   componentWillUnmount() {
+    console.log("component unmounted");
     this.unsubscribeFromAuth();
   }
 
