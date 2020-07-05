@@ -23,7 +23,7 @@ export const selectIsLoading = createSelector(
   selectShop,
   shop => shop.isLoading
 )
-export const selectIsCollectionLoaded = createSelector(
+export const selectIsCollectionLoading = createSelector(
   selectShop,
-  shop => !!Object.keys(shop.collections).length 
+  shop => !Object.keys(shop.collections).length 
 )

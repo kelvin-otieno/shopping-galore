@@ -1,17 +1,13 @@
 import React, { Component } from "react";
 import "./shop.scss";
-import CollectionsOverview from "../../collections-overview/collections-overview";
 import { Route } from "react-router-dom";
-import CollectionPage from "../collection-page/collection-page";
-
 import { fetchCollections } from "../../../redux/shop/shop.actions";
 import { connect } from "react-redux";
-import WithSpinner from "../../with-spinner/with-spinner";
-import { selectIsCollectionLoaded } from "../../../redux/shop/shop.selectors";
-import { createStructuredSelector } from "reselect";
+import CollectionsOverviewContainer from "../../collections-overview/collections-overview.container";
+import CollectionsPageContainer from "../collection-page/collection-page.container";
 
-const CollectionsOverviewWithSpinner = WithSpinner(CollectionsOverview);
-const CollectionPageWithSpinner = WithSpinner(CollectionPage);
+// const CollectionsOverviewWithSpinner = WithSpinner(CollectionsOverview);
+// const CollectionPageWithSpinner = WithSpinner(CollectionPage);
 
 class Shop extends Component {
   unsubscribeFromSnapshot = null;
@@ -22,37 +18,26 @@ class Shop extends Component {
   }
 
   render() {
-    const { match, selectIsCollectionLoaded } = this.props;
+    const { match} = this.props;
     return (
       <div className="shop">
         <Route
           exact
           path={`${match.path}/:routeName`}
-          render={(props) => (
-            <CollectionPageWithSpinner
-              isLoading={!selectIsCollectionLoaded}
-              {...props}
-            />
-          )}
+          component = {CollectionsPageContainer}
         />
         <Route
           exact
           path={`${match.path}`}
-          render={(props) => (
-            <CollectionsOverviewWithSpinner
-              isLoading={!selectIsCollectionLoaded}
-              {...props}
-            />
-          )}
+          component = {CollectionsOverviewContainer}
+          
         />
       </div>
     );
   }
 }
 
-const mapStateToProps = createStructuredSelector({
-  selectIsCollectionLoaded: selectIsCollectionLoaded,
-});
+
 
 const mapDispatchToProps = (dispatch) => {
   return {
@@ -60,4 +45,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Shop);
+export default connect(null, mapDispatchToProps)(Shop);
