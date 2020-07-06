@@ -5,13 +5,12 @@ import HomePage from "./components/pages/homepage/homepage";
 import Shop from "./components/pages/shop/shop";
 import Header from "./components/header/header";
 import SignInAndSignUpPage from "./components/pages/sign-in-and-sign-up/sign-in-and-sign-up-page";
-import { auth, createUserProfileDocument } from "./firebase/firebase.utils";
-import setCurrentUser from "./redux/user/user.action";
 import { connect } from "react-redux";
 import CheckoutPage from "./components/pages/checkout/checkout-page";
 import { createStructuredSelector } from "reselect";
 import { selectCurrentUser } from "./redux/user/user.selectors";
 import { selectCollectionsForPreview } from "./redux/shop/shop.selectors";
+import { checkUserSession } from "./redux/user/user.action";
 
 class App extends Component {
   constructor(props) {
@@ -24,29 +23,30 @@ class App extends Component {
   unsubscribeFromAuth = null;
 
   componentDidMount() {
-    const { setCurrentUser } = this.props;
+    const { checkUserSession } = this.props;
 
-    this.unsubscribeFromAuth = auth.onAuthStateChanged(async (userAuth) => {
-      if (userAuth) {
-        const userRef = createUserProfileDocument(userAuth);
-        (await userRef).onSnapshot((snapShot) => {
-          setCurrentUser({
-            id: snapShot.id,
-            ...snapShot.data(),
-          });
-        });
-      } else {
-        setCurrentUser(userAuth);
-      }
-      // addCollectionAndDocuments(
-      //   "collections",
-      //   collections.map(({ title, items }) => ({ title, items }))
-      // );
-    });
+    checkUserSession()
+
+    // this.unsubscribeFromAuth = auth.onAuthStateChanged(async (userAuth) => {
+    //   if (userAuth) {
+    //     const userRef = createUserProfileDocument(userAuth);
+    //     (await userRef).onSnapshot((snapShot) => {
+    //       setCurrentUser({
+    //         id: snapShot.id,
+    //         ...snapShot.data(),
+    //       });
+    //     });
+    //   } else {
+    //     setCurrentUser(userAuth);
+    //   }
+    //   // addCollectionAndDocuments(
+    //   //   "collections",
+    //   //   collections.map(({ title, items }) => ({ title, items }))
+    //   // );
+    // });
   }
 
   componentWillUnmount() {
-    console.log("component unmounted");
     this.unsubscribeFromAuth();
   }
 
@@ -80,13 +80,14 @@ class App extends Component {
   }
 }
 
+const mapDispatchToProps = (dispatch) => ({
+  checkUserSession:() => dispatch(checkUserSession())
+})
+
 const mapStateToProps = createStructuredSelector({
   currentUser: selectCurrentUser,
   collections: selectCollectionsForPreview,
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  setCurrentUser: (user) => dispatch(setCurrentUser(user)),
-});
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(mapStateToProps,mapDispatchToProps)(App);

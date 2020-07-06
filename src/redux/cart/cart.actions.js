@@ -34,10 +34,15 @@ const toggleDisplayCart = () => {
   };
 };
 
+const clearCart = () => ({
+  type:cartActionTypes.CLEAR_CART
+})
+
 export {
   addToCart,
   toggleDisplayCart,
   removeFromCart,
   increaseCartQuantity,
   decreaseCartQuantity,
+  clearCart,
 };

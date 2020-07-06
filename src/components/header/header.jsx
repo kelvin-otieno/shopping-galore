@@ -1,15 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { ReactComponent as AppLogo } from "../../images/crown.svg";
-import { auth } from "../../firebase/firebase.utils";
 import "./header.scss";
 import { connect } from "react-redux";
 import CartIcon from "../cart-icon/cart-icon";
 import Cart from "../cart/cart";
 import { selectCurrentUser } from "../../redux/user/user.selectors";
 import { createStructuredSelector } from "reselect";
+import { signOutStart } from "../../redux/user/user.action";
 
-const Header = ({ currentUser }) => {
+const Header = ({ currentUser,signOutStart }) => {
+
   return (
     <div className="header">
       <div className="navbar-fixed">
@@ -33,7 +34,7 @@ const Header = ({ currentUser }) => {
                 <li>
                   <Link
                     to="/signin"
-                    onClick={() => auth.signOut()}
+                    onClick={signOutStart}
                     className="link"
                   >
                     SIGN OUT
@@ -69,8 +70,13 @@ const Header = ({ currentUser }) => {
   );
 };
 
+
+const mapDispatchToProps = dispatch => ({
+  signOutStart: () => dispatch(signOutStart())
+})
+
 const mapStateToProps = createStructuredSelector ({
   currentUser: selectCurrentUser,
 });
 
-export default connect(mapStateToProps)(Header);
+export default connect(mapStateToProps,mapDispatchToProps)(Header);
