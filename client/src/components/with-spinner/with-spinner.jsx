@@ -1,8 +1,8 @@
 import React from "react";
-import { SpinnerDiv } from "./with-spinner.styles";
+import Spinner from "../spinner/spinner.component";
 
 const WithSpinner = (WrappedComponent) => ({ isLoading, ...otherProps }) => {
-  return isLoading ? <SpinnerDiv /> : <WrappedComponent {...otherProps} />;
+  return isLoading ? <Spinner/>: <WrappedComponent {...otherProps} />;
 };
 
 export default WithSpinner;

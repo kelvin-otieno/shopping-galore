@@ -1,13 +1,17 @@
-import React, { Component } from "react";
+import React, { Component, Suspense } from "react";
 import "./shop.scss";
 import { Route } from "react-router-dom";
 import { connect } from "react-redux";
-import CollectionsOverviewContainer from "../../collections-overview/collections-overview.container";
-import CollectionsPageContainer from "../collection-page/collection-page.container";
 import { fetchCollectionsStart } from "../../../redux/shop/shop.actions";
+import { lazy } from "react";
+import Spinner from "../../spinner/spinner.component";
 
-// const CollectionsOverviewWithSpinner = WithSpinner(CollectionsOverview);
-// const CollectionPageWithSpinner = WithSpinner(CollectionPage);
+const CollectionsOverviewContainer = lazy(() =>
+  import("../../collections-overview/collections-overview.container")
+);
+const CollectionsPageContainer = lazy(() =>
+  import("../collection-page/collection-page.container")
+);
 
 class Shop extends Component {
   unsubscribeFromSnapshot = null;
@@ -18,26 +22,25 @@ class Shop extends Component {
   }
 
   render() {
-    const { match} = this.props;
+    const { match } = this.props;
     return (
       <div className="shop">
-        <Route
-          exact
-          path={`${match.path}/:routeName`}
-          component = {CollectionsPageContainer}
-        />
-        <Route
-          exact
-          path={`${match.path}`}
-          component = {CollectionsOverviewContainer}
-          
-        />
+        <Suspense fallback={<Spinner />}>
+          <Route
+            exact
+            path={`${match.path}/:routeName`}
+            component={CollectionsPageContainer}
+          />
+          <Route
+            exact
+            path={`${match.path}`}
+            component={CollectionsOverviewContainer}
+          />
+        </Suspense>
       </div>
     );
   }
 }
-
-
 
 const mapDispatchToProps = (dispatch) => {
   return {
