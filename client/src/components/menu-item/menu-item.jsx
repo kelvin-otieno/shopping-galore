@@ -12,7 +12,7 @@ const MenuItem = ({ title, imageUrl, size, linkUrl, history, match }) => {
       >
         <div
           className={"zoom menu-item valign-wrapper " + size}
-          style={{ backgroundImage: `url(${imageUrl})` }}
+          style={{ backgroundImage: `url(${imageUrl})`,backgroundRepeat:"no-repeat",backgroundSize:"cover"}}
         >
           <div className="description ">
             <h4 className="flow-text  title">{title.toUpperCase()}</h4>

@@ -31,7 +31,7 @@ class SignIn extends Component {
   render() {
     const { googleSignInStart } = this.props;
     return (
-      <div className="main-div">
+      <div className="container-fluid">
         <div className="row">
           <h4>I already have an account</h4>
           <h6>Sign In with your email and password</h6>

@@ -1,4 +1,7 @@
+
+
 .collection-item {
+  padding: 10px !important;
   &:hover {
     .image {
       opacity: 0.7;
@@ -8,7 +11,9 @@
       display: block;
     }
   }
-  
+
+  border: 2px solid white;
+
 }
 
 .add-button {
@@ -17,6 +22,10 @@
   margin: auto;
   margin-bottom: 10px;
   display: none;
+  @media only screen and (max-width: 800px) {
+    display: block;
+  }
+  
 }
 
 .name {

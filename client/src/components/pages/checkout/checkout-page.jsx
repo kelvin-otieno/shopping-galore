@@ -58,7 +58,7 @@ const CheckoutPage = ({
                   </span>
                 </div>
               </td>
-              <td>{`$${price}`}</td>
+              <td>{`KES ${price}`}</td>
               <td>
                 <span
                   className="remove-item"
@@ -74,7 +74,7 @@ const CheckoutPage = ({
 
       <div className = "bottom-div">
         <div className="total-price">
-          <span>{`TOTAL : $ ${totalPrice}`}</span>
+          <span>{`TOTAL : KES ${totalPrice}`}</span>
         </div>
           <div className="center red-text flow-text">
             <span>*Please use the following test credit card for payments*</span>

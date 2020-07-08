@@ -16,13 +16,13 @@ class CollectionItem extends Component {
   render() {
     const { id, name, price, imageUrl } = this.props;
     return (
-      <div>
+      
         <div className="collection-item col s12 m6 l3">
           <div
             style={{
               backgroundImage: `url(${imageUrl})`,
-              height: "350px",
               backgroundRepeat: "no-repeat",
+              height: "300px",
               backgroundSize: "cover",
             }}
             className="valign-wrapper image"
@@ -37,10 +37,10 @@ class CollectionItem extends Component {
 
           <div>
             <span className="left hoverable name">{name}</span>
-            <span className="right price hoverable">{`${"$"}${price}`}</span>
+            <span className="right price hoverable">{`${"KES "}${price}`}</span>
           </div>
         </div>
-      </div>
+      
     );
   }
 }

@@ -12,7 +12,7 @@ const CartItem = ({ imageUrl, price, quantity, name }) => {
           <div className="card-content">
             <p>{name}</p>
 
-            <p>{`${quantity} x $${price}`}</p>
+            <p>{`${quantity} x KES ${price}`}</p>
           </div>
         </div>
       </div>

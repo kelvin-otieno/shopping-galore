@@ -3,6 +3,7 @@ import CustomInput from "../../input/custom-input";
 import CustomButton from "../../custom-button/custom-button";
 import { connect } from "react-redux";
 import { signUpStart } from "../../../redux/user/user.action";
+import './sign-up.scss'
 
 class SignUp extends Component {
   constructor() {
@@ -49,7 +50,7 @@ class SignUp extends Component {
   };
   render() {
     return (
-      <div>
+      <div className = "container-fluid">
         <div className="row">
           <h4>I don't have an account</h4>
           <h6>Sign up with your email and password</h6>

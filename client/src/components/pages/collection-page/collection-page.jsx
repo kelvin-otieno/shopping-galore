@@ -5,10 +5,12 @@ import { connect } from "react-redux";
 import "./collection-page.scss";
 
 const CollectionPage = ({ collection }) => {
-  console.log(collection);
   return (
-    <div className="category">
+    <div className=" container-fluid">
+      <div className = "row">
+
      <Collection title={collection.title} items={collection.items} />
+      </div>
     </div>
   );
 };

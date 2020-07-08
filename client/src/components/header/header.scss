@@ -1,10 +1,17 @@
-.header .navbar-fixed{
-  margin-right: 350px !important;
+
+
+.cart-mobile{
+ right: 20px !important;
+z-index: 1000;
+position: fixed;
+top: 0px !important;
 }
 
 // .navbar-fixed {
 //   margin: 0 0px 10px 25px;
 // }
+
+
 
 ul {
   li {
@@ -16,16 +23,16 @@ ul {
   padding-left: 0px !important;
 }
 
-.dropdown-content {
-  width: fit-content !important;
-  height: fit-content !important;
-  top: 100% !important;
-  display: block !important;
-  margin-right: 0px !important;
-  li:hover {
-    background-color: white !important;
-  }
-}
+// .dropdown-content {
+//   width: fit-content !important;
+//   height: fit-content !important;
+//   top: 100% !important;
+//   display: block !important;
+//   margin-right: 0px !important;
+//   li:hover {
+//     background-color: white !important;
+//   }
+// }
 
 // nav ul li:hover {
 //   background-color: rgba(0, 0, 0, 0) !important;
