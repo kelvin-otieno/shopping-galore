@@ -21,9 +21,7 @@ class TransactionsHistoryPage extends Component {
 
   componentDidMount() {
     const { currentUser, loadUserTransactionsStart } = this.props;
-    if (currentUser) {
-      loadUserTransactionsStart(currentUser);
-    }
+    loadUserTransactionsStart(currentUser);
   }
 
   componentDidUpdate(nextProps) {
@@ -91,6 +89,10 @@ class TransactionsHistoryPage extends Component {
             );
           })}
         </ul>
+        <span className="red-text">
+          Kindly refresh page (CTRL + R) if you are unable expand the
+          transactions.
+        </span>
       </div>
     );
   }

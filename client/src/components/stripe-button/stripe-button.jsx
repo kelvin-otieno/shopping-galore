@@ -18,8 +18,8 @@ const StripeCheckoutButton = ({ cartItems }) => {
       success_url = "http://localhost:3000/success";
       cancel_url = "http://localhost:3000/checkout";
     } else {
-      success_url = "https://shop-onclick.herokuapp/success";
-      cancel_url = "https://shop-onclick.herokuapp/checkout";
+      success_url = "https://shop-onclick.herokuapp.com/success";
+      cancel_url = "https://shop-onclick.herokuapp.com/checkout";
     }
     try {
       axios({

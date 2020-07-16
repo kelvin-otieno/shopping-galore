@@ -71,11 +71,6 @@ const Header = ({ currentUser, signOutStart }) => {
             SHOP
           </Link>
         </li>
-        <li>
-          <Link to="/contact" className="link">
-            CONTACT
-          </Link>
-        </li>
         {currentUser ? (
           <>
             <li>
