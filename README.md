@@ -2,6 +2,8 @@
 The application is integrated with stripe for seemless payments processing.
 Customers can sign-up or sign in using google, select items which they want to purchase and pay using their debit or credit cards which are supported by stripe.
 
+The application is also available as a Progressive Web App to allow users to interact with it almost like a native app.
+
 <!-- ## Available Scripts
 
 In the project directory, you can run:
