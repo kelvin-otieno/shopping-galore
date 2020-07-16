@@ -1,6 +1,8 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+[Shop Onclick](https://shop-onclick.herokuapp.com) is an e-commerce application created using react, redux and uses the firebase database for storage.
+The application is integrated with stripe for seemless payments processing.
+Customers can sign-up or sign in using google, select items which they want to purchase and pay using their debit or credit cards which are supported by stripe.
 
-## Available Scripts
+<!-- ## Available Scripts
 
 In the project directory, you can run:
 
@@ -65,4 +67,4 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 
 ### `npm run build` fails to minify
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify -->
