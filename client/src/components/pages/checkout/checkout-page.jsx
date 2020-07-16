@@ -72,20 +72,19 @@ const CheckoutPage = ({
         </tbody>
       </table>
 
-      <div className = "bottom-div">
+      <div className="bottom-div">
         <div className="total-price">
           <span>{`TOTAL : KES ${totalPrice}`}</span>
         </div>
-          <div className="center red-text flow-text">
-            <span>*Please use the following test credit card for payments*</span>
-            <br/>
-            <span>4242 4242 4242 4242 - CVC:123</span>
-          </div>
-        <div className="stripe-btn">
-          <StripeCheckoutButton price = {totalPrice}/>
+        <div className="center red-text flow-text">
+          <span>*Please use the following test credit card for payments*</span>
+          <br />
+          <span>4242 4242 4242 4242 - CVC:123</span>
         </div>
       </div>
-
+      <div className="payment-btn right">
+        <StripeCheckoutButton />
+      </div>
     </div>
   );
 };

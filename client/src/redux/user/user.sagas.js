@@ -78,10 +78,10 @@ function* onSignOutStart() {
   yield takeLatest(userActionTypes.SIGN_OUT_START, signOutStart);
 }
 
-function* signUpStart({payload:{ displayName, email, password }}) {
+function* signUpStart({payload:{ displayName, email, password,phoneNumber }}) {
   try {
       const { user } = yield auth.createUserWithEmailAndPassword(email, password);
-      yield put(signUpSuccess({user,additionalData:{displayName}}))
+      yield put(signUpSuccess({user,additionalData:{displayName,phoneNumber}}))
       
   } catch (error) {
       yield put(signUpFailure(error.message))

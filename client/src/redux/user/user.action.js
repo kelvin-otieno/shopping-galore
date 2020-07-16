@@ -43,6 +43,9 @@ const signUpFailure = (error) => ({
   type: userActionTypes.SIGN_UP_FAILURE,
   payload: error,
 });
+const clearUserError = () => ({
+  type: userActionTypes.CLEAR_USER_ERROR
+})
 
 export {
   googleSignInStart,
@@ -56,4 +59,5 @@ export {
   signUpSuccess,
   signUpStart,
   signUpFailure,
+  clearUserError
 };

@@ -20,6 +20,7 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
   const snapShot = await userRef.get();
 
   if (!snapShot.exists) {
+    console.log(userAuth)
     const { displayName, email } = userAuth;
     const createdAt = new Date();
 
@@ -50,7 +51,6 @@ export const addCollectionAndDocuments = async (
     const newDocRef = collectionRef.doc();
     batch.set(newDocRef, doc);
   });
-
   return await batch.commit();
 };
 

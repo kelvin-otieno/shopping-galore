@@ -9,7 +9,8 @@ import { selectCollectionsForPreview } from "./redux/shop/shop.selectors";
 import { checkUserSession } from "./redux/user/user.action";
 import Spinner from "./components/spinner/spinner.component";
 import ErrorBoundary from "./components/error-boundary/error-boundary.component";
-
+import TransactionsHistoryPage from "./components/pages/transactions-history/transactions-history-page";
+import SuccessPage from "./components/pages/success/success";
 const HomePage = lazy(() => import("./components/pages/homepage/homepage"));
 const Shop = lazy(() => import("./components/pages/shop/shop"));
 const SignInAndSignUpPage = lazy(() =>
@@ -77,7 +78,9 @@ class App extends Component {
                   )
                 }
               />
+              <Route exact path="/history" component={TransactionsHistoryPage} />
               <Route exact path="/checkout" component={CheckoutPage} />
+              <Route exact path="/success" component={SuccessPage} />
             </Suspense>
           </ErrorBoundary>
         </Switch>

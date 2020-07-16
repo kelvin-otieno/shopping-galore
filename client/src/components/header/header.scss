@@ -1,17 +1,13 @@
-
-
-.cart-mobile{
- right: 20px !important;
-z-index: 1000;
-position: fixed;
-top: 0px !important;
+.cart-mobile {
+  right: 20px !important;
+  z-index: 1000;
+  position: fixed;
+  top: 0px !important;
 }
 
 // .navbar-fixed {
 //   margin: 0 0px 10px 25px;
 // }
-
-
 
 ul {
   li {
@@ -21,6 +17,15 @@ ul {
     }
   }
   padding-left: 0px !important;
+}
+
+.username {
+  color: white;
+  background-color: black;
+  margin-left: 5px;
+  margin-right: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 // .dropdown-content {

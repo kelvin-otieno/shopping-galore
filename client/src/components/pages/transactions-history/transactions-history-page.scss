@@ -7,8 +7,6 @@
 }
 
 td {
-  width: 20% !important;
-  font-weight: bold;
   div * {
     margin: 5px;
   }
@@ -33,24 +31,22 @@ img {
 }
 
 .bottom-div{
-  text-align: right;
   *{
     padding-bottom: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  font-weight: bold;
+  font-size: 20px;
   }
 }
 
-.total-price {
-  margin-top: 20px;
-  font-weight: bold;
-  font-size: 20px;
-}
 
 .header {
   font-weight: bold;
 }
 
-// .payment-btn{
+.payment-btn{
 
-//   display: inline-block;
-//   right: 0px;
-// }
+  display: inline-block;
+  right: 0px;
+}

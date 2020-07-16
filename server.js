@@ -16,11 +16,11 @@ const port = process.env.PORT || 5000;
 // app.use(compression);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(enforce.HTTPS({ trustProtoHeader: true }));
 
 app.use(cors());
 
 if (process.env.NODE_ENV === "production") {
+  app.use(enforce.HTTPS({ trustProtoHeader: true }));
   app.use(express.static(path.join(__dirname, "client/build")));
   app.get("*", (req, res) => {
     res.sendFile(path.join(__dirname, "client/build", "index.html"));
@@ -36,17 +36,45 @@ app.get("/service-worker.js", (req, res) => {
   res.sendFile(path.resolve(__dirname, "..", "build", "service-worker.js"));
 });
 
-app.post("/payment", (req, res) => {
-  const body = {
-    source: req.body.token.id,
-    amount: req.body.amount,
-    currency: "kes",
-  };
-  stripe.charges.create(body, (stripeErr, stripeRes) => {
-    if (stripeErr) {
-      res.status(500).send({ error: stripeErr });
-    } else {
-      res.status(200).send({ success: stripeRes });
-    }
+// Fetch the Checkout Session to display the JSON result on the success page
+app.get("/checkout-session", async (req, res) => {
+  const { sessionId } = req.query;
+   const session = await stripe.checkout.sessions.retrieve(sessionId.toString());
+   res.send(session);
+});
+
+const createStripeSession = async (line_items, success_url, cancel_url) => {
+  const session = await stripe.checkout.sessions.create({
+    payment_method_types: ["card"],
+    line_items,
+    mode: "payment",
+    success_url: `${success_url}?session_id={CHECKOUT_SESSION_ID}`,
+    cancel_url,
   });
+
+  return session;
+};
+
+app.post("/stripe-payment", async (req, res) => {
+  try {
+    const { cartItems, success_url, cancel_url } = req.body;
+  const line_items = cartItems.map((cartItem) => {
+    return {
+      name: cartItem.name,
+      amount: cartItem.price * 100,
+      quantity: cartItem.quantity,
+      currency: "kes",
+    };
+  });
+
+  const session = await createStripeSession(
+    line_items,
+    success_url,
+    cancel_url,
+  );
+  res.status(200).send({ session_id: session.id });
+  } catch (error) {
+    res.send({error})
+  }
+  
 });

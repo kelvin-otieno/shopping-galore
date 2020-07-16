@@ -31,17 +31,22 @@ const Header = ({ currentUser, signOutStart }) => {
                   SHOP
                 </Link>
               </li>
-              <li>
-                <Link to="/contact" className="link">
-                  CONTACT
-                </Link>
-              </li>
+
               {currentUser ? (
-                <li>
-                  <Link to="/signin" onClick={signOutStart} className="link">
-                    SIGN OUT
-                  </Link>
-                </li>
+                <>
+                  <li>
+                    <Link to="/signin" onClick={signOutStart} className="link">
+                      SIGN OUT
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/history" className="link">
+                      HISTORY
+                    </Link>
+                  </li>
+
+                  <li className="username">{currentUser.displayName}</li>
+                </>
               ) : (
                 <li>
                   <Link to="/signin" className="link">
@@ -72,11 +77,20 @@ const Header = ({ currentUser, signOutStart }) => {
           </Link>
         </li>
         {currentUser ? (
-          <li>
-            <Link to="/signin" onClick={signOutStart} className="link">
-              SIGN OUT
-            </Link>
-          </li>
+          <>
+            <li>
+              <Link to="/signin" onClick={signOutStart} className="link">
+                SIGN OUT
+              </Link>
+            </li>
+            <li>
+              <Link to="/history" className="link">
+                HISTORY
+              </Link>
+            </li>
+
+            <li className="username">{currentUser.displayName}</li>
+          </>
         ) : (
           <li>
             <Link to="/signin" className="link">
