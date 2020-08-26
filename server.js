@@ -108,7 +108,7 @@ app.post("/stkpush", async (req, res) => {
 
     let hookUrl =
       process.env.NODE_ENV === "production"
-        ? `https://shop-onclick.herokuapp.com:${port}/hooks/mpesa`
+        ? `https://shop-onclick.herokuapp.com/hooks/mpesa`
         : "https://5bb7a108bd08.ngrok.io/hooks/mpesa";
     console.log(hookUrl)
     mpesa
