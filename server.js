@@ -172,7 +172,11 @@ app.post("/hooks/mpesa", (req, res) => {
   }
   console.log(redirectUrl);
   res.status(200).end(); // Responding is important
-  opn(redirectUrl);
+  opn(redirectUrl, {
+  app: 'Chrome',
+  wait: true
+}).then(cp => console.log('child process open success:')).catch(console.error);
+  // opn(redirectUrl);
   // res.setHeader("Content-Type", "text/html")
   // res.redirect(redirectUrl);
   // let message = {
