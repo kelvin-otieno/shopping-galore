@@ -12,6 +12,19 @@ import {
   decreaseCartQuantity,
 } from "../../../redux/cart/cart.actions";
 import StripeCheckoutButton from "../../stripe-button/stripe-button";
+import Modal from "../../modal/modal";
+import { selectCurrentUser } from "../../../redux/user/user.selectors";
+import axios from "axios";
+import { withRouter } from "react-router-dom/cjs/react-router-dom.min";
+
+const handleClick = (MSISDN, Amount, history) => {
+  // console.log(`amount is ${Amount} and no is ${MSISDN}`);
+  axios.post("/stkpush", {
+    MSISDN,
+    Amount,
+  });
+  // axios.get('/test')
+};
 
 const CheckoutPage = ({
   cartItems,
@@ -19,6 +32,8 @@ const CheckoutPage = ({
   increaseCartQuantity,
   decreaseCartQuantity,
   totalPrice,
+  currentUser,
+  history,
 }) => {
   return (
     <div className="container checkout-page">
@@ -80,11 +95,33 @@ const CheckoutPage = ({
           <span>*Please use the following test credit card for payments*</span>
           <br />
           <span>4242 4242 4242 4242 - CVC:123</span>
+          <br />
+          <span>
+            *Any payment done via MPESA will be automatically reversed by
+            safaricom within 24 hours since this is just a demo application. Be sure to use small amounts.*
+          </span>
         </div>
       </div>
       <div className="payment-btn right">
-        <StripeCheckoutButton />
+        {currentUser ? (
+          <StripeCheckoutButton />
+        ) : (
+          <div></div>
+        )}
       </div>
+      {currentUser && currentUser.phoneNumber ? (
+        <div>
+          <Modal
+            header={`LIPA NA MPESA (${currentUser.phoneNumber})`}
+            text="press the pay button and enter mpesa pin from your phone to confirm payment or close button to close the dialog"
+            handleClick={() =>
+              handleClick(currentUser.phoneNumber, totalPrice, history)
+            }
+          />
+        </div>
+      ) : (
+        <div></div>
+      )}
     </div>
   );
 };
@@ -92,6 +129,7 @@ const CheckoutPage = ({
 const mapStateToProps = createStructuredSelector({
   cartItems: selectCartItems,
   totalPrice: selectCartTotalPrice,
+  currentUser: selectCurrentUser,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -100,4 +138,6 @@ const mapDispatchToProps = (dispatch) => ({
   decreaseCartQuantity: (id) => dispatch(decreaseCartQuantity(id)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(CheckoutPage);
+export default withRouter(
+  connect(mapStateToProps, mapDispatchToProps)(CheckoutPage)
+);

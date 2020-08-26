@@ -7,15 +7,19 @@
 // }
 .sign-in-and-sign-up {
   margin-top: 50px;
-  padding:0px 40px 0px 40px;
+  padding: 0px 40px 0px 40px;
 }
 
 .sign-in-sign-up {
-    background-color: black;
-    color: white;
-  
-    &:hover {
-      background-color: white;
-      color: black;
-    }
+  background-color: black;
+  color: white;
+
+  &:hover {
+    background-color: white;
+    color: black;
   }
+}
+
+.disclaimer {
+  font-weight: bold;
+}

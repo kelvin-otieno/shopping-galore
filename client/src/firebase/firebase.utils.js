@@ -41,6 +41,8 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
 
 firebase.initializeApp(config);
 
+
+
 export const addCollectionAndDocuments = async (
   collectionName,
   documentsToAdd
@@ -51,8 +53,10 @@ export const addCollectionAndDocuments = async (
     const newDocRef = collectionRef.doc();
     batch.set(newDocRef, doc);
   });
+  console.log("done")
   return await batch.commit();
 };
+
 
 export const convertCollectionsSnapshotToMap = (snapshot) => {
   const transformedCollection = snapshot.docs.map((doc) => {

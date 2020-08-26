@@ -11,6 +11,9 @@ import Spinner from "./components/spinner/spinner.component";
 import ErrorBoundary from "./components/error-boundary/error-boundary.component";
 import TransactionsHistoryPage from "./components/pages/transactions-history/transactions-history-page";
 import SuccessPage from "./components/pages/success/success";
+import FailurePage from "./components/pages/failure/failure";
+// import "materialize-css/dist/css/materialize.min.css";
+// import "materialize-css/dist/js/materialize.min.js";
 const HomePage = lazy(() => import("./components/pages/homepage/homepage"));
 const Shop = lazy(() => import("./components/pages/shop/shop"));
 const SignInAndSignUpPage = lazy(() =>
@@ -81,6 +84,7 @@ class App extends Component {
               <Route exact path="/history" component={TransactionsHistoryPage} />
               <Route exact path="/checkout" component={CheckoutPage} />
               <Route exact path="/success" component={SuccessPage} />
+              <Route exact path="/failure" component={FailurePage} />
             </Suspense>
           </ErrorBoundary>
         </Switch>

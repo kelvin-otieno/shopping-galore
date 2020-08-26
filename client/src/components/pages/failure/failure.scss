@@ -1,0 +1,18 @@
+.failure {
+    display: flex;
+    flex-direction: column;
+}
+
+.failure-message {
+  font-weight: bold;
+  color: red;
+}
+
+.img-div {
+  text-align: center;
+}
+
+img{
+    width: 512px;
+    height: 512px;
+}

@@ -19,6 +19,7 @@ function* getSnapshotAndSignInUser(user,additionalData) {
   try {
     const userRef = yield call(createUserProfileDocument, user,additionalData);
     const userSnapshot = yield userRef.get();
+    
     yield put(signInSuccess({ id: userSnapshot.id, ...userSnapshot.data() }));
   } catch (error) {
     yield put(signInFailure(error.message));
@@ -28,6 +29,7 @@ function* getSnapshotAndSignInUser(user,additionalData) {
 function* googleSignInStart() {
   try {
     const { user } = yield signInWithGoogle();
+    console.log(user)
     yield getSnapshotAndSignInUser(user);
   } catch (error) {
     yield put(signInFailure(error.message));
