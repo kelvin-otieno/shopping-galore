@@ -119,9 +119,9 @@ app.post("/stkpush", async (req, res) => {
         PartyB: "174379",
         PhoneNumber: MSISDN,
         CallBackURL:hookUrl,
-        AccountReference: "Shop OnClick Test",
+        AccountReference: "Shop OnClick",
         passKey:
-          "bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ada1ed2c919",
+          "50yGvFLgZc8T1plF5u0ncwfTYJry4BQV",
         TransactionType: "CustomerPayBillOnline",
       })
       .then((response) => {
